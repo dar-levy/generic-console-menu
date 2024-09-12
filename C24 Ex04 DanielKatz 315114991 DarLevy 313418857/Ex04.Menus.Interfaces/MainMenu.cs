@@ -2,12 +2,12 @@ namespace Ex04.Menus.Interfaces;
 
 public class MainMenu : IMenu
 {
-    private readonly string _iTitle; 
+    private readonly string r_Title; 
     private readonly List<Option> r_Options;
 
-    public MainMenu(string i_Title)
+    public MainMenu(string rTitle)
     {
-        _iTitle = i_Title;
+        r_Title = rTitle;
         r_Options = new List<Option>();
     }
 

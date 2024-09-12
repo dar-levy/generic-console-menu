@@ -67,25 +67,4 @@ public class Option : IMenu
 
         Console.WriteLine(menuOutput);
     }
-    
-    public IMenu ExecuteSubOption(int i_Choice)
-    {
-        Console.Clear();
-
-        if (i_Choice == 0)
-        {
-            return m_Parent;
-        }
-
-        Option selectedOption = r_Options[i_Choice];
-
-        if (selectedOption.Count > 0)
-        {
-            return selectedOption;
-        }
-
-        selectedOption.Funtionality.Execute();
-        
-        return this;
-    }
 }
