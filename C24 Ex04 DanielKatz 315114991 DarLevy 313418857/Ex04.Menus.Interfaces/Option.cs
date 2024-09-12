@@ -1,5 +1,6 @@
 ﻿namespace Ex04.Menus.Interfaces;
 
-public class Class1
+public class Option
 {
+        
 }
