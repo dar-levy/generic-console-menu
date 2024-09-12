@@ -76,12 +76,19 @@ public class MainMenu
     {
         int selectedItemMenuIndex;
 
-        while (!(int.TryParse(Console.ReadLine(), out selectedItemMenuIndex) &&
-                 selectedItemMenuIndex >= 0 && selectedItemMenuIndex < m_CurrentOption.Options.Count))
+        while (!isValidChoice(Console.ReadLine(), out selectedItemMenuIndex))
         {
-            Console.WriteLine("Invalid select! Please enter a number from the options above, try again:");
+            Console.WriteLine("Invalid selection! Please enter a number from the options above, try again:");
         }
 
         return selectedItemMenuIndex;
     }
+
+    private bool isValidChoice(string input, out int selectedItemMenuIndex)
+    {
+        return int.TryParse(input, out selectedItemMenuIndex) &&
+               selectedItemMenuIndex >= 0 &&
+               selectedItemMenuIndex < m_CurrentOption.Options.Count;
+    }
+
 }
