@@ -41,14 +41,6 @@ public class Option : IMenu
         }
     }
 
-    public int Count
-    {
-        get
-        {
-            return r_Options.Count;
-        }
-    }
-    
     public void AddOption(string i_Description, IFunctionality i_Functionality)
     {
         r_Options.Add(new Option(i_Description, this, i_Functionality));
