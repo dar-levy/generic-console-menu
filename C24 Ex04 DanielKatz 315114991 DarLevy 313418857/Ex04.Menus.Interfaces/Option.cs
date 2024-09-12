@@ -3,22 +3,15 @@
 public class Option
 {
     private readonly string r_Description;
-    private readonly List<Option> r_Options = new List<Option>();
-    private Option m_ParentMenu;
+    private readonly List<Option> r_Options;
+    private Option m_Parent;
     private IFunctionality m_Functionality;  
 
-    public Option(string i_Description, Option i_ParentMenu)
+    public Option(string i_Description, Option i_Parent)
     {
         r_Description = i_Description;
-        m_ParentMenu = i_ParentMenu;
-    }
-
-    public int OptionsCount
-    {
-        get 
-        { 
-            return r_Options.Count; 
-        }
+        m_Parent = i_Parent;
+        r_Options = new List<Option>();
     }
 
     public List<Option> Options
@@ -43,5 +36,10 @@ public class Option
         { 
             return m_Functionality; 
         }
+    }
+    
+    public void AddOption(string i_Option)
+    {
+        r_Options.Add(new Option(i_Option, this));
     }
 }
