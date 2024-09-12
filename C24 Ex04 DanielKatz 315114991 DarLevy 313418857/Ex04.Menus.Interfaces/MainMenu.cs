@@ -96,6 +96,6 @@ public class MainMenu
     {
         return int.TryParse(input, out selectedItemMenuIndex) &&
                selectedItemMenuIndex >= 0 &&
-               selectedItemMenuIndex < m_CurrentOption.Options.Count;
+               selectedItemMenuIndex <= m_CurrentOption.Options.Count;
     }
 }
