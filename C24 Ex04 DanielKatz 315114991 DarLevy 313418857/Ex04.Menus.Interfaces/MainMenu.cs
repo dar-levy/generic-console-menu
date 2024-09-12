@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Ex04.Menus.Interfaces;
 
 public class MainMenu : IMenu
@@ -15,9 +17,31 @@ public class MainMenu : IMenu
     {
         Option option = new Option(i_Description, this, i_Functionality);
     }
-
+    
     public void Show()
     {
-        throw new NotImplementedException();
+        bool isExit = false;
+
+        while (!isExit)
+        {
+            Console.WriteLine(r_Title);
+            displayOptions();
+            Console.WriteLine("\nPlease enter your choice or 0 to exit:");
+            string input = Console.ReadLine();
+        }
+    }
+
+    private void displayOptions()
+    {
+        StringBuilder menuOutput = new StringBuilder();
+
+        for (int i = 0; i < r_Options.Count; i++)
+        {
+            menuOutput.Append($"\n{i + 1} - {r_Options[i].Description}");
+        }
+
+        menuOutput.Append("\n0 - Exit");
+
+        Console.WriteLine(menuOutput);
     }
 }
