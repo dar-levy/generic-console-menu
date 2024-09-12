@@ -5,6 +5,7 @@ public class Option
     private readonly string r_Description;
     private readonly List<Option> r_Options = new List<Option>();
     private Option m_ParentMenu;
+    private IFunctionality m_Functionality;  
 
     public Option(string i_Description, Option i_ParentMenu)
     {
@@ -33,6 +34,14 @@ public class Option
         get 
         {
             return r_Description;
+        }
+    }
+    
+    public IFunctionality Functionality
+    {
+        get 
+        { 
+            return m_Functionality; 
         }
     }
 }
