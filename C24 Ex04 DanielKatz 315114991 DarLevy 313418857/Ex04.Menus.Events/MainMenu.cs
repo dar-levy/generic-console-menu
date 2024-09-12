@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Ex04.Menus.Interfaces;
+namespace Ex04.Menus.Events;
 
 public class MainMenu
 {
@@ -24,7 +24,7 @@ public class MainMenu
     // Methods
     public MainMenu()
     {
-        m_Root = new Option(null, "Main Menu - Interfaces");
+        m_Root = new Option(null, "Main Menu - Events");
         m_CurrentOption = m_Root;
     }
   
