@@ -4,7 +4,6 @@ namespace Ex04.Menus.Interfaces;
 
 public class MainMenu
 {
-    internal const int k_ExitOrBackMenuItemIndex = 0; 
     private readonly string r_Title;
     private Option m_Root;
     private Option m_CurrentOption;
@@ -47,7 +46,7 @@ public class MainMenu
 
     private bool ShouldExit(int choice)
     {
-        return m_CurrentOption == m_Root && choice == k_ExitOrBackMenuItemIndex;
+        return m_CurrentOption == m_Root && choice == 0;
     }
 
     private void NavigateToOption(int choice)
@@ -90,5 +89,4 @@ public class MainMenu
                selectedItemMenuIndex >= 0 &&
                selectedItemMenuIndex < m_CurrentOption.Options.Count;
     }
-
 }
