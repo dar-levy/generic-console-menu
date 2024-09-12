@@ -2,61 +2,54 @@
 
 namespace Ex04.Menus.Interfaces;
 
-public class Option : IMenu
+public class Option
 {
     private readonly string r_Description;
     private readonly List<Option> r_Options;
-    private IMenu m_Parent;
+    private Option m_Parent;
     private IFunctionality m_Functionality;
-
-    public Option(string i_Description, IMenu i_Parent, IFunctionality i_Functionality)
-    {
-        r_Description = i_Description;
-        m_Parent = i_Parent;
-        m_Functionality = i_Functionality;
-        r_Options = new List<Option>();
-    }
-
-    public List<Option> Options
-    {
-        get
-        {
-            return r_Options; 
-        }
-    }
 
     public string Description
     {
-        get 
+        get
         {
             return r_Description;
         }
     }
-    
-    public IFunctionality Funtionality
+		
+    public List<Option> Options
     {
-        get 
+        get
         {
-            return m_Functionality;
+            return r_Options;
         }
     }
 
-    public void AddOption(string i_Description, IFunctionality i_Functionality)
+    public Option(Option i_LastOption, string i_Description)
     {
-        r_Options.Add(new Option(i_Description, this, i_Functionality));
+        m_Parent = i_LastOption;
+        r_Description = i_Description;
     }
     
-    public void Show()
+    // TODO - Add AddOption(Option option)
+
+    internal void Show()
     {
-        StringBuilder menuOutput = new StringBuilder(r_Description);
+        int currentIndex = MainMenu.k_ExitOrBackMenuItemIndex;
 
-        for (int i = 0; i < r_Options.Count; i++)
+        Console.WriteLine($"{r_Description}");
+        Console.WriteLine($"{MainMenu.k_ExitOrBackMenuItemIndex}. {(m_Parent == null ? "Exit" : "Back")}");
+        foreach (Option option in r_Options)
         {
-            menuOutput.Append($"\n{i + 1} - {r_Options[i].Description}");
+            currentIndex++;
+            Console.WriteLine($"{currentIndex}. {option.r_Description}");
         }
+        
+        // TODO: Change static text
+        Console.Write("Please enter the option number you choose from the above: ");
+    }
 
-        menuOutput.Append(m_Parent == null ? "\n0 - Exit" : "\n0 - Back");
-
-        Console.WriteLine(menuOutput);
+    internal virtual void OnSelect()
+    {
     }
 }

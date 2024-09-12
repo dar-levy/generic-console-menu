@@ -2,8 +2,9 @@ using System.Text;
 
 namespace Ex04.Menus.Interfaces;
 
-public class MainMenu : IMenu
+public class MainMenu
 {
+    internal const int k_ExitOrBackMenuItemIndex = 0; 
     private readonly string r_Title; 
     private readonly List<Option> r_Options;
 
