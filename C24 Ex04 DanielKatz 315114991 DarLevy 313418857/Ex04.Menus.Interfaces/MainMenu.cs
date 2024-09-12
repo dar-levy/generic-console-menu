@@ -27,19 +27,23 @@ public class MainMenu
         m_Root = new Option(null, "Main Menu");
         m_CurrentOption = m_Root;
     }
-    
+  
     public void Show()
     {
         bool isExit = false;
-
+    
         while (!isExit)
         {
             int choice = Choose();
             isExit = ShouldExit(choice);
-        
-            if (!isExit)
+            bool isBack = ShouldReturn(choice);
+            if (isBack)
             {
-                NavigateToOption(choice);
+                m_CurrentOption = m_CurrentOption.Parent;
+            }
+            else if (!isExit && choice > 0)
+            {
+                NavigateToOption(choice - 1);
             }
         }
     }
@@ -47,6 +51,11 @@ public class MainMenu
     private bool ShouldExit(int choice)
     {
         return m_CurrentOption == m_Root && choice == 0;
+    }
+
+    private bool ShouldReturn(int choice)
+    {
+        return m_CurrentOption != m_Root && choice == 0;
     }
 
     private void NavigateToOption(int choice)
@@ -87,6 +96,6 @@ public class MainMenu
     {
         return int.TryParse(input, out selectedItemMenuIndex) &&
                selectedItemMenuIndex >= 0 &&
-               selectedItemMenuIndex < m_CurrentOption.Options.Count;
+               selectedItemMenuIndex <= m_CurrentOption.Options.Count;
     }
 }

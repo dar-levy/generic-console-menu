@@ -25,6 +25,14 @@ public class Option
         }
     }
 
+    public Option Parent
+    {
+        get
+        {
+            return m_Parent;
+        }
+    }
+
     public void Execute()
     {
         m_Functionality.Execute();
@@ -40,6 +48,7 @@ public class Option
         m_Parent = i_LastOption;
         r_Description = i_Description;
         m_Functionality = i_Functionality;
+        r_Options = new List<Option>();
     }
     
     public void AddOption(Option i_NewOption)
@@ -60,9 +69,5 @@ public class Option
         
         // TODO: Change static text
         Console.Write("Please enter the option number you choose from the above: ");
-    }
-
-    internal virtual void OnSelect()
-    {
     }
 }
