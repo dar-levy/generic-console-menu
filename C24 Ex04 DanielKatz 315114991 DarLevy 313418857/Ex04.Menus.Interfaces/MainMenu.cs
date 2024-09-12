@@ -5,18 +5,28 @@ namespace Ex04.Menus.Interfaces;
 public class MainMenu
 {
     internal const int k_ExitOrBackMenuItemIndex = 0; 
-    private readonly string r_Title; 
-    private readonly List<Option> r_Options;
+    private readonly string r_Title;
+    private Option m_Root;
+    private Option m_CurrentOption;
 
-    public MainMenu(string rTitle)
+    public Option Root
     {
-        r_Title = rTitle;
-        r_Options = new List<Option>();
+        get
+        {
+            return m_Root;
+        }
+
+        set
+        {
+            m_Root = value;
+        }
     }
 
-    public void AddOption(string i_Description, IFunctionality i_Functionality)
+    // Methods
+    public MainMenu()
     {
-        Option option = new Option(i_Description, this, i_Functionality);
+        m_Root = new Option(null, "Main Menu");
+        m_CurrentOption = m_Root;
     }
     
     public void Show()
@@ -25,24 +35,53 @@ public class MainMenu
 
         while (!isExit)
         {
-            Console.WriteLine(r_Title);
-            displayOptions();
-            Console.WriteLine("\nPlease enter your choice or 0 to exit:");
-            string input = Console.ReadLine();
+            int choice = Choose();
+            isExit = ShouldExit(choice);
+        
+            if (!isExit)
+            {
+                NavigateToOption(choice);
+            }
         }
     }
 
-    private void displayOptions()
+    private bool ShouldExit(int choice)
     {
-        StringBuilder menuOutput = new StringBuilder();
+        return m_CurrentOption == m_Root && choice == k_ExitOrBackMenuItemIndex;
+    }
 
-        for (int i = 0; i < r_Options.Count; i++)
+    private void NavigateToOption(int choice)
+    {
+        m_CurrentOption = m_CurrentOption.Options[choice];
+    }
+    
+    private int Choose()
+    {
+        int choice = 0;
+        if (m_CurrentOption.IsFunctional())
         {
-            menuOutput.Append($"\n{i + 1} - {r_Options[i].Description}");
+            m_CurrentOption.Execute();
+        }
+        else
+        {
+            m_CurrentOption.Show();
+            choice = getChoice();
+            Console.Clear();
         }
 
-        menuOutput.Append("\n0 - Exit");
+        return choice;
+    }
 
-        Console.WriteLine(menuOutput);
+    private int getChoice()
+    {
+        int selectedItemMenuIndex;
+
+        while (!(int.TryParse(Console.ReadLine(), out selectedItemMenuIndex) &&
+                 selectedItemMenuIndex >= 0 && selectedItemMenuIndex < m_CurrentOption.Options.Count))
+        {
+            Console.WriteLine("Invalid select! Please enter a number from the options above, try again:");
+        }
+
+        return selectedItemMenuIndex;
     }
 }

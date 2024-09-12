@@ -25,20 +25,33 @@ public class Option
         }
     }
 
-    public Option(Option i_LastOption, string i_Description)
+    public void Execute()
+    {
+        m_Functionality.Execute();
+    }
+
+    public bool IsFunctional()
+    {
+        return m_Functionality != null;
+    }
+
+    public Option(Option i_LastOption, string i_Description, IFunctionality i_Functionality = null)
     {
         m_Parent = i_LastOption;
         r_Description = i_Description;
+        m_Functionality = i_Functionality;
     }
     
-    // TODO - Add AddOption(Option option)
-
-    internal void Show()
+    public void AddOption(Option i_NewOption)
     {
-        int currentIndex = MainMenu.k_ExitOrBackMenuItemIndex;
+        r_Options.Add(i_NewOption);
+    }
 
+    public void Show()
+    {
+        int currentIndex = 0;
         Console.WriteLine($"{r_Description}");
-        Console.WriteLine($"{MainMenu.k_ExitOrBackMenuItemIndex}. {(m_Parent == null ? "Exit" : "Back")}");
+        Console.WriteLine($"{currentIndex}. {(m_Parent == null ? "Exit" : "Back")}");
         foreach (Option option in r_Options)
         {
             currentIndex++;
