@@ -24,7 +24,7 @@ public class MainMenu
     // Methods
     public MainMenu()
     {
-        m_Root = new Option(null, "Main Menu");
+        m_Root = new Option(null, "Main Menu - Events");
         m_CurrentOption = m_Root;
     }
   

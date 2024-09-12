@@ -40,12 +40,12 @@ namespace C24_Ex04_DanielKatz_315114991_DarLevy_313418857
 		private void buildMenuEvents()
 		{
 			m_ShowDateTimeMenuEvent = new Events.Option(m_MainMenuEvent.Root, "Show current Date/Time");
-			m_ShowDateTimeMenuEvent.AddOption(new Events.Option(m_ShowDateTimeMenuEvent, "Show current Time",new TimePresentor()));
-			m_ShowDateTimeMenuEvent.AddOption(new Events.Option(m_ShowDateTimeMenuEvent, "Show current Date", new DatePresentor()));
+			m_ShowDateTimeMenuEvent.AddOption(new Events.Option(m_ShowDateTimeMenuEvent, "Show current Time",new TimePresentor().Execute));
+			m_ShowDateTimeMenuEvent.AddOption(new Events.Option(m_ShowDateTimeMenuEvent, "Show current Date", new DatePresentor().Execute));
 
 			m_VersionAndCapitalsMenEvent = new Events.Option(m_MainMenuEvent.Root, "Version and Capitals");
-			m_VersionAndCapitalsMenEvent.AddOption(new Events.Option(m_VersionAndCapitalsMenEvent, "Count Capitals", new CapitalsCounter()));
-			m_VersionAndCapitalsMenEvent.AddOption(new Events.Option(m_VersionAndCapitalsMenEvent, "Show Version", new VersionPresentor()));
+			m_VersionAndCapitalsMenEvent.AddOption(new Events.Option(m_VersionAndCapitalsMenEvent, "Count Capitals", new CapitalsCounter().Execute));
+			m_VersionAndCapitalsMenEvent.AddOption(new Events.Option(m_VersionAndCapitalsMenEvent, "Show Version", new VersionPresentor().Execute));
 
 			m_MainMenuEvent.Root.AddOption(m_ShowDateTimeMenuEvent);
 			m_MainMenuEvent.Root.AddOption(m_VersionAndCapitalsMenEvent);		
