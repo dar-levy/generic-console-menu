@@ -36,6 +36,9 @@ public class MenuTests
 			m_VersionAndDigitsMenInterface = new Option(m_MainMenuInterface.Root, "Version and Capitals");
 			m_VersionAndDigitsMenInterface.AddOption(new Option(m_VersionAndDigitsMenInterface, "Count Capitals", new CapitalsCounter()));
 			m_VersionAndDigitsMenInterface.AddOption(new Option(m_VersionAndDigitsMenInterface, "Show Version", new VersionPresentor()));
+			
+			m_MainMenuInterface.Root.AddOption(m_ShowDateTimeMenuInterface);
+			m_MainMenuInterface.Root.AddOption(m_VersionAndDigitsMenInterface);
 		}
 
 		// private void buildMenuDelegates()
