@@ -1,7 +1,7 @@
 using System.Globalization;
 using Ex04.Menus.Interfaces;
 
-namespace C24_Ex04_DanielKatz_315114991_DarLevy_313418857;
+namespace Ex04.Menus.Test;
 
 public class DatePresentor : IFunctionality
 {

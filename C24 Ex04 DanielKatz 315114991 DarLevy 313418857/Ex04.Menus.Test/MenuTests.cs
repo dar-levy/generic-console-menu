@@ -3,7 +3,7 @@ using Interfaces = Ex04.Menus.Interfaces;
 using Events = Ex04.Menus.Events;
 
 
-namespace C24_Ex04_DanielKatz_315114991_DarLevy_313418857
+namespace Ex04.Menus.Test
 {
 	public class MenuTests
 	{

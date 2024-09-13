@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-namespace C24_Ex04_DanielKatz_315114991_DarLevy_313418857;
+namespace Ex04.Menus.Test;
 
 public static class Program
 {
