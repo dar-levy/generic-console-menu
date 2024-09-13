@@ -6,7 +6,7 @@ public static class Program
 {
     public static void Main()
     {
-        MenuTests menu = new MenuTests();
-        menu.Show();
+        MockMenus mockMenus = new MockMenus();
+        mockMenus.Show();
     }
 }
