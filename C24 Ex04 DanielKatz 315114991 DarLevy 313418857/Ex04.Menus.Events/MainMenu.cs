@@ -64,7 +64,7 @@ public class MainMenu
         
         if (m_CurrentOption.IsFunctional())
         {
-            m_CurrentOption.Execute();
+            m_CurrentOption.OnChoose();
         }
         else
         {

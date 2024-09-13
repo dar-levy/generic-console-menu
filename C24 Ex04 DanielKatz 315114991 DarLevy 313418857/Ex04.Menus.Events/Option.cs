@@ -8,15 +8,7 @@ public class Option
     private readonly List<Option> r_Options;
     private Option m_Parent;
     private Action m_Functionality;
-
-    public string Description
-    {
-        get
-        {
-            return r_Description;
-        }
-    }
-		
+    
     public List<Option> Options
     {
         get
@@ -33,7 +25,7 @@ public class Option
         }
     }
 
-    public void Execute()
+    public void OnChoose()
     {
         if (m_Functionality != null)
         {
@@ -62,15 +54,16 @@ public class Option
     public void Show()
     {
         int currentIndex = 0;
+        
         Console.WriteLine($"{r_Description}");
         Console.WriteLine($"{currentIndex}. {(m_Parent == null ? "Exit" : "Back")}");
+        
         foreach (Option option in r_Options)
         {
             currentIndex++;
             Console.WriteLine($"{currentIndex}. {option.r_Description}");
         }
         
-        // TODO: Change static text
-        Console.Write("Please enter the option number you choose from the above: ");
+        Console.Write("Please enter your choice: ");
     }
 }
