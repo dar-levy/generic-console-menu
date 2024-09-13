@@ -54,9 +54,9 @@ public class Option
     public void Show()
     {
         int currentIndex = 0;
+        string exitOrBack = m_Parent == null ? "Exit" : "Back";
         
         Console.WriteLine($"{r_Description}");
-        Console.WriteLine($"{currentIndex}. {(m_Parent == null ? "Exit" : "Back")}");
         
         foreach (Option option in r_Options)
         {
@@ -64,6 +64,7 @@ public class Option
             Console.WriteLine($"{currentIndex}. {option.r_Description}");
         }
         
-        Console.Write("Please enter your choice: ");
+        Console.WriteLine($"0. {exitOrBack}");
+        Console.Write($"Please enter your choice (1-{r_Options.Count()} or 0 to {exitOrBack.ToLower()}): ");
     }
 }
