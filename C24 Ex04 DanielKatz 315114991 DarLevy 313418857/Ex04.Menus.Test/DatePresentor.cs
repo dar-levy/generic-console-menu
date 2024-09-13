@@ -7,6 +7,6 @@ public class DatePresentor : IFunctionality
 {
     public void Execute()
     {
-        Console.WriteLine($"The date is {DateTime.Today.ToString(CultureInfo.InvariantCulture)}\n");
+        Console.WriteLine($"The date is {DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}\n");
     }
 }
