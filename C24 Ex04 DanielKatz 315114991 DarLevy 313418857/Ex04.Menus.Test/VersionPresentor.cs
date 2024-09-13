@@ -1,11 +1,12 @@
 using Ex04.Menus.Interfaces;
 
-namespace Ex04.Menus.Test;
-
-public class VersionPresentor : IFunctionality
+namespace Ex04.Menus.Test
 {
-    public void Execute()
+    public class VersionPresentor : IFunctionality
     {
-        Console.WriteLine("App Version: 24.3.4.0495\n");
+        public void Execute()
+        {
+            Console.WriteLine("App Version: 24.3.4.0495\n");
+        }
     }
 }

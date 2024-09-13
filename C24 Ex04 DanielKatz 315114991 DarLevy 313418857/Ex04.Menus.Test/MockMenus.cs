@@ -1,8 +1,3 @@
-
-using Interfaces = Ex04.Menus.Interfaces;
-using Events = Ex04.Menus.Events;
-
-
 namespace Ex04.Menus.Test
 {
 	public class MockMenus

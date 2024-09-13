@@ -1,6 +1,7 @@
-namespace Ex04.Menus.Interfaces;
-
-public interface IFunctionality
+namespace Ex04.Menus.Interfaces
 {
-    void Execute();
+    public interface IFunctionality
+    {
+        void Execute();
+    }
 }

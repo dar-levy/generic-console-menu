@@ -1,12 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-namespace Ex04.Menus.Test;
-
-public static class Program
+﻿
+namespace Ex04.Menus.Test
 {
-    public static void Main()
+    public static class Program
     {
-        MockMenus mockMenus = new MockMenus();
-        mockMenus.Show();
+        public static void Main()
+        {
+            MockMenus mockMenus = new MockMenus();
+            mockMenus.Show();
+        }
     }
 }

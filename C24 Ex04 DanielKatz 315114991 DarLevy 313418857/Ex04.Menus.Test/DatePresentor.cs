@@ -1,12 +1,13 @@
 using System.Globalization;
 using Ex04.Menus.Interfaces;
 
-namespace Ex04.Menus.Test;
-
-public class DatePresentor : IFunctionality
+namespace Ex04.Menus.Test
 {
-    public void Execute()
+    public class DatePresentor : IFunctionality
     {
-        Console.WriteLine($"The date is {DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}\n");
+        public void Execute()
+        {
+            Console.WriteLine($"The date is {DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}\n");
+        }
     }
 }

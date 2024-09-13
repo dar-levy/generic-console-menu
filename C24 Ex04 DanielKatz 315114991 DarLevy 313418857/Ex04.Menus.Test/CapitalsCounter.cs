@@ -1,24 +1,25 @@
 using Ex04.Menus.Interfaces;
 
-namespace Ex04.Menus.Test;
-
-public class CapitalsCounter : IFunctionality
+namespace Ex04.Menus.Test
 {
-    public void Execute()
+    public class CapitalsCounter : IFunctionality
     {
-        int capitalsCount = 0;
-
-        Console.WriteLine("Enter your sentence:");
-        string sentence = Console.ReadLine();
-
-        foreach (char letter in sentence)
+        public void Execute()
         {
-            if (Char.IsUpper(letter))
-            {
-                capitalsCount += 1;
-            }
-        }
+            int capitalsCount = 0;
 
-        Console.WriteLine($"Number of Capitals: {capitalsCount}\n");
+            Console.WriteLine("Enter your sentence:");
+            string sentence = Console.ReadLine();
+
+            foreach (char letter in sentence)
+            {
+                if (Char.IsUpper(letter))
+                {
+                    capitalsCount += 1;
+                }
+            }
+
+            Console.WriteLine($"Number of Capitals: {capitalsCount}\n");
+        }
     }
 }
