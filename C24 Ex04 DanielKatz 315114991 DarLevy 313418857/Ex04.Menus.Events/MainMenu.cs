@@ -1,101 +1,95 @@
 using System.Text;
 
-namespace Ex04.Menus.Events;
-
-public class MainMenu
+namespace Ex04.Menus.Events
 {
-    private readonly string r_Title;
-    private Option m_Root;
-    private Option m_CurrentOption;
-
-    public Option Root
+    public class MainMenu
     {
-        get
+        private readonly string r_Title;
+        private Option m_InitialMenu;
+        private Option m_CurrentOption;
+
+        public Option InitialMenu
         {
-            return m_Root;
+            get { return m_InitialMenu; }
         }
 
-        set
+        public MainMenu()
         {
-            m_Root = value;
+            m_InitialMenu = new Option(null, "Events Menu");
+            m_CurrentOption = m_InitialMenu;
         }
-    }
 
-    // Methods
-    public MainMenu()
-    {
-        m_Root = new Option(null, "Main Menu - Events");
-        m_CurrentOption = m_Root;
-    }
-  
-    public void Show()
-    {
-        bool isExit = false;
-    
-        while (!isExit)
+        public void Show()
         {
-            int choice = Choose();
-            isExit = ShouldExit(choice);
-            bool isBack = ShouldReturn(choice);
-            if (isBack)
+            bool isExit = false;
+
+            while (!isExit)
             {
-                m_CurrentOption = m_CurrentOption.Parent;
-            }
-            else if (!isExit && choice > 0)
-            {
-                NavigateToOption(choice - 1);
+                int choice = Choose();
+                isExit = ShouldExit(choice);
+                bool isBack = ShouldReturn(choice);
+
+                if (isBack)
+                {
+                    m_CurrentOption = m_CurrentOption.Parent;
+                }
+                else if (!isExit && choice > 0)
+                {
+                    NavigateToOption(choice - 1);
+                }
             }
         }
-    }
 
-    private bool ShouldExit(int choice)
-    {
-        return m_CurrentOption == m_Root && choice == 0;
-    }
-
-    private bool ShouldReturn(int choice)
-    {
-        return m_CurrentOption != m_Root && choice == 0;
-    }
-
-    private void NavigateToOption(int choice)
-    {
-        m_CurrentOption = m_CurrentOption.Options[choice];
-    }
-    
-    private int Choose()
-    {
-        int choice = 0;
-        if (m_CurrentOption.IsFunctional())
+        private bool ShouldExit(int i_Choice)
         {
-            m_CurrentOption.Execute();
-        }
-        else
-        {
-            m_CurrentOption.Show();
-            choice = getChoice();
-            Console.Clear();
+            return m_CurrentOption == m_InitialMenu && i_Choice == 0;
         }
 
-        return choice;
-    }
-
-    private int getChoice()
-    {
-        int selectedItemMenuIndex;
-
-        while (!isValidChoice(Console.ReadLine(), out selectedItemMenuIndex))
+        private bool ShouldReturn(int i_Choice)
         {
-            Console.WriteLine("Invalid selection! Please enter a number from the options above, try again:");
+            return m_CurrentOption != m_InitialMenu && i_Choice == 0;
         }
 
-        return selectedItemMenuIndex;
-    }
+        private void NavigateToOption(int i_Choice)
+        {
+            m_CurrentOption = m_CurrentOption.Options[i_Choice];
+        }
 
-    private bool isValidChoice(string input, out int selectedItemMenuIndex)
-    {
-        return int.TryParse(input, out selectedItemMenuIndex) &&
-               selectedItemMenuIndex >= 0 &&
-               selectedItemMenuIndex <= m_CurrentOption.Options.Count;
+        private int Choose()
+        {
+            int choice = 0;
+
+            if (m_CurrentOption.IsFunctional())
+            {
+                m_CurrentOption.OnChoose();
+            }
+            else
+            {
+                m_CurrentOption.Show();
+                choice = getChoice();
+                Console.Clear();
+            }
+
+            return choice;
+        }
+
+        private int getChoice()
+        {
+            int optionIndex;
+
+            while (!isValidChoice(Console.ReadLine(), out optionIndex))
+            {
+                Console.WriteLine($"Invalid input! Please enter a number 0-{m_CurrentOption.Options.Count()}");
+            }
+
+            return optionIndex;
+        }
+
+        private bool isValidChoice(string i_Input, out int o_OptionIndex)
+        {
+            return int.TryParse(i_Input, out o_OptionIndex) &&
+                   o_OptionIndex >= 0 &&
+                   o_OptionIndex <= m_CurrentOption.Options.Count;
+        }
     }
 }
