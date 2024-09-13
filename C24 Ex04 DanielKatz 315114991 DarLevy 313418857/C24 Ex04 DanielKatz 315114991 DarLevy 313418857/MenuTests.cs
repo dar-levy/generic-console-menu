@@ -25,30 +25,30 @@ namespace C24_Ex04_DanielKatz_315114991_DarLevy_313418857
 		private void buildMenuInterfaces()
 		{
 			//Create the Interface Main Menu
-			m_ShowDateTimeMenuInterface = new Interfaces.Option(m_MainMenuInterface.Root, "Show current Date/Time");
+			m_ShowDateTimeMenuInterface = new Interfaces.Option(m_MainMenuInterface.InitialMenu, "Show current Date/Time");
 			m_ShowDateTimeMenuInterface.AddOption(new Interfaces.Option(m_ShowDateTimeMenuInterface, "Show current Time",new TimePresentor()));
 			m_ShowDateTimeMenuInterface.AddOption(new Interfaces.Option(m_ShowDateTimeMenuInterface, "Show current Date", new DatePresentor()));
 
-			m_VersionAndCapitalsMenuInterface = new Interfaces.Option(m_MainMenuInterface.Root, "Version and Capitals");
+			m_VersionAndCapitalsMenuInterface = new Interfaces.Option(m_MainMenuInterface.InitialMenu, "Version and Capitals");
 			m_VersionAndCapitalsMenuInterface.AddOption(new Interfaces.Option(m_VersionAndCapitalsMenuInterface, "Count Capitals", new CapitalsCounter()));
 			m_VersionAndCapitalsMenuInterface.AddOption(new Interfaces.Option(m_VersionAndCapitalsMenuInterface, "Show Version", new VersionPresentor()));
 
-			m_MainMenuInterface.Root.AddOption(m_ShowDateTimeMenuInterface);
-			m_MainMenuInterface.Root.AddOption(m_VersionAndCapitalsMenuInterface);
+			m_MainMenuInterface.InitialMenu.AddOption(m_ShowDateTimeMenuInterface);
+			m_MainMenuInterface.InitialMenu.AddOption(m_VersionAndCapitalsMenuInterface);
 		}
 
 		private void buildMenuEvents()
 		{
-			m_ShowDateTimeMenuEvent = new Events.Option(m_MainMenuEvent.Root, "Show current Date/Time");
+			m_ShowDateTimeMenuEvent = new Events.Option(m_MainMenuEvent.InitialMenu, "Show current Date/Time");
 			m_ShowDateTimeMenuEvent.AddOption(new Events.Option(m_ShowDateTimeMenuEvent, "Show current Time",new TimePresentor().Execute));
 			m_ShowDateTimeMenuEvent.AddOption(new Events.Option(m_ShowDateTimeMenuEvent, "Show current Date", new DatePresentor().Execute));
 
-			m_VersionAndCapitalsMenEvent = new Events.Option(m_MainMenuEvent.Root, "Version and Capitals");
+			m_VersionAndCapitalsMenEvent = new Events.Option(m_MainMenuEvent.InitialMenu, "Version and Capitals");
 			m_VersionAndCapitalsMenEvent.AddOption(new Events.Option(m_VersionAndCapitalsMenEvent, "Count Capitals", new CapitalsCounter().Execute));
 			m_VersionAndCapitalsMenEvent.AddOption(new Events.Option(m_VersionAndCapitalsMenEvent, "Show Version", new VersionPresentor().Execute));
 
-			m_MainMenuEvent.Root.AddOption(m_ShowDateTimeMenuEvent);
-			m_MainMenuEvent.Root.AddOption(m_VersionAndCapitalsMenEvent);		
+			m_MainMenuEvent.InitialMenu.AddOption(m_ShowDateTimeMenuEvent);
+			m_MainMenuEvent.InitialMenu.AddOption(m_VersionAndCapitalsMenEvent);		
 		}
 		public void Show()
 		{
